@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="bank.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class="text-center">
+        <h1 class="text-4xl font-bold head">
+            Lessgoooo for <span class="text-sky-600">Mooooooneyy</span>!!
+        </h1>
+    </header>
+    <main>
+        <section class="grid grid-cols-3 pt-8 w-1/2 mx-auto">
+            <div class="bg-sky-400 rounded-xl p-6">
+                <h1 class="text-4xl font-semibold">$ <span id="w-amount">00</span></h1>
+                <h1>Withdraw</h1>
+
+                <!-- <button class="bg-amber-400 mt-2 rounded-xl p-2 font-bold text-white">Withdraw</button> -->
+            </div>
+            <div class="bg-purple-400 rounded-xl ml-4 p-6">
+                <h1 class="text-4xl font-semibold">$ <span  id="dep">00</span></h1>
+                <h1>Deposit</h1>
+
+            </div>
+            <div class="bg-violet-400 rounded-xl ml-4 p-6">
+                <h1 class="text-4xl font-semibold">$<span id="balance"> 00</span></h1>
+                <h1>Balance</h1>
+
+            </div>
+        </section>
+
+        <section class="pt-4 grid grid-cols-2 w-1/2 mx-auto">
+
+            <div class="bg-red-400 p-4 rounded-xl mr-4">
+                <h1 class="text-2xl font-serif underline text-center mb-2">Please Withdraw!</h1>
+                <input id="withdraw" type="text" class="p-2 rounded-lg w-full" placeholder="$amount you want to be withdraw">
+                <button id="btn-withdraw" class="bg-blue-600 mt-2 flex justify-center item-center w-full hover:bg-white hover:text-black font-semibold transition hover:border mx-auto rounded-xl p-1 px-4 text-white">Withdraw</button>
+            </div>
+
+            <div class="bg-green-400 p-4 rounded-xl">
+                <h1 class="text-2xl font-serif underline text-center mb-2">Please Deposit!</h1>
+                <input type="text" class="p-2 rounded-lg w-full" id="deposit" placeholder="$amount you want to be deposit">
+                <button id="depo" class="bg-blue-600 mt-2 flex justify-center item-center w-full hover:bg-white hover:text-black font-semibold transition hover:border mx-auto rounded-xl p-1 px-4 text-white">Deposit</button>
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+    <!-------- js file --------->
+
+
+    <script>
+        let balance = 0;
+        let withdraw_amount = 0;
+        let deposit_amount = 0;
+        let withdraw = document.getElementById('withdraw');
+        document.getElementById('btn-withdraw').addEventListener('click', function () {
+
+            let withdrawValue = parseFloat(withdraw.value);
+            withdraw_amount = withdraw_amount + withdrawValue;
+            balance = balance - withdrawValue;
+            let wAmount = document.getElementById('w-amount');
+            wAmount.innerText = withdraw_amount;
+            const balanceCard = document.getElementById('balance');
+            balanceCard.innerText = balance;
+            withdraw.value = '';
+        })
+
+        const deposit_btn = document.getElementById('depo');
+        deposit_btn.addEventListener('click', function () {
+            const deposit = document.getElementById('deposit');
+            let depositValue = parseFloat(deposit.value);
+            deposit_amount = deposit_amount + depositValue;
+            balance = balance + depositValue;
+            const depo_card = document.getElementById('dep');
+            depo_card.innerText = deposit_amount;
+            const balance_card = document.getElementById('balance');
+            balance_card.innerText = balance;
+            deposit.value = '';
+        })
+    </script>
+
+
+
+</body>
+
+</html>
